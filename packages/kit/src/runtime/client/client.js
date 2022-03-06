@@ -523,7 +523,7 @@ export function create_client({ target, session, base, trailing_slash }) {
 					const { href } = new URL(requested, url);
 					node.uses.dependencies.add(href);
 
-					return started ? fetch(resource, info) : initial_fetch(resource, info);
+					return initial_fetch(resource, info);
 				}
 			};
 
