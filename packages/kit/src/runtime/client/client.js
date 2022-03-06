@@ -506,10 +506,13 @@ export function create_client(app, target) {
 						requested = resolved.href.slice(url.origin.length);
 					}
 
+					// hack to avoid fetching each page
+					initial_fetch(requested, init)
+
 					// prerendered pages may be served from any origin, so `initial_fetch` urls shouldn't be resolved
-					return started
-						? subsequent_fetch(requested, resolved.href, init)
-						: initial_fetch(requested, init);
+					// return started
+					// 	? subsequent_fetch(requested, resolved.href, init)
+					// 	: initial_fetch(requested, init);
 				},
 				setHeaders: () => {}, // noop
 				depends,
